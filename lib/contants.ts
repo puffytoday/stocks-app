@@ -1,7 +1,8 @@
 export const NAV_ITEMS = [
   { href: '/', label: 'Dashboard' },
   { href: '/search', label: 'Search' },
-  // { href: '/watchlist', label: 'Watchlist' },
+  { href: '/watchlist', label: 'Watchlist' },
+  { href: '/news', label: 'News' },
 ]
 
 // Sign-up form select options
@@ -69,7 +70,7 @@ export const MARKET_OVERVIEW_WIDGET_CONFIG = {
       title: 'Technology',
       symbols: [
         { s: 'NASDAQ:AAPL', d: 'Apple' },
-        { s: 'NASDAQ:GOOGL', d: 'Alphabet' },
+        { s: 'NSE:INFY', d: 'Infosys' },
         { s: 'NASDAQ:MSFT', d: 'Microsoft' },
         { s: 'NASDAQ:FB', d: 'Meta Platforms' },
         { s: 'NYSE:ORCL', d: 'Oracle Corp' },
