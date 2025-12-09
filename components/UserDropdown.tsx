@@ -20,7 +20,11 @@ const UserDropdown = () => {
     router.push('/sign-in')
   }
 
-  const user = { name: 'Sid', email: 'k@sid.com' }
+  const user = {
+    name: 'Siddharth',
+    email: 'k@sid.com',
+    pfp: '/assets/images/avatar.png',
+  }
 
   return (
     <DropdownMenu>
@@ -30,7 +34,7 @@ const UserDropdown = () => {
           className="flex items-center gap-3 text-gray-400 hover:text-yellow-500"
         >
           <Avatar className="h-8 w-8">
-            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarImage src={user.pfp} />
             <AvatarFallback className="bg-yellow-500 text-yellow-900 text-sm font-bold">
               {user.name[0]}
             </AvatarFallback>
@@ -46,7 +50,7 @@ const UserDropdown = () => {
         <DropdownMenuLabel>
           <div className="flex relative items-center gap-3 py-2">
             <Avatar className="h-10 w-10">
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarImage src={user.pfp} />
               <AvatarFallback className="bg-yellow-500 text-yellow-900 text-sm font-bold">
                 {user.name[0]}
               </AvatarFallback>
@@ -69,9 +73,9 @@ const UserDropdown = () => {
         <DropdownMenuSeparator className="md:hidden sm:hidden bg-gray-600" />
         <DropdownMenuItem
           onClick={handleSignOut}
-          className="text-gray-400 text-md font-medium focus:bg-transparent focus:text-red-500 transition-colors cursor-pointer"
+          className="text-gray-400 text-md font-medium focus:bg-transparent focus:text-red-500 transition-colors cursor-pointer "
         >
-          <LogOut className="h-4 w-4 mr-2 hidden sm:block" />
+          <LogOut className="h-4 w-4 mr-2 pt-0.5 hidden sm:block" />
           Logout
         </DropdownMenuItem>
       </DropdownMenuContent>
