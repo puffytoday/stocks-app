@@ -1,7 +1,6 @@
 import mongoose from 'mongoose'
 
 declare global {
-  // eslint-disable-next-line no-var
   var mongooseCache:
     | {
         conn: typeof mongoose | null
@@ -30,8 +29,6 @@ export const connectToDatabase = async () => {
     cached.promise = null
     throw error
   }
-
-  console.log(`MongoDB connected: ${cached.conn.connection.host}`)
 
   return cached.conn
 }

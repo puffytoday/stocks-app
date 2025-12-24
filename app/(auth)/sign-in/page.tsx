@@ -2,9 +2,14 @@
 import FooterLink from '@/components/forms/FooterLink'
 import InputField from '@/components/forms/InputField'
 import { Button } from '@/components/ui/button'
+import { signInWithEmail } from '@/lib/actions/auth.actions'
+import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 
 const SignIn = () => {
+  const router = useRouter()
+
   const {
     register,
     handleSubmit,
@@ -16,9 +21,14 @@ const SignIn = () => {
 
   const onSubmit = async (data: SignInFormData) => {
     try {
-      console.log('Sign in')
+      const response = await signInWithEmail(data)
+      if (response?.success) {
+        console.log(response)
+        router.push('/')
+      }
     } catch (e) {
-      console.log(e)
+      console.log('Sign in failed', e)
+      toast.error('Sign in failed', { description: e instanceof Error ? e.message : 'Failed to sign in' })
     }
   }
 
@@ -40,6 +50,7 @@ const SignIn = () => {
         <InputField
           label="Password"
           name="password"
+          type="password"
           placeholder="Enter your password"
           register={register}
           error={errors.password}
@@ -51,18 +62,10 @@ const SignIn = () => {
             },
           }}
         />
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          className="yellow-btn w-full mt-5"
-        >
+        <Button type="submit" disabled={isSubmitting} className="yellow-btn w-full mt-5">
           {isSubmitting ? 'Signing In' : 'Sign In'}
         </Button>
-        <FooterLink
-          text="Don't have an account?"
-          linkText="Create an account"
-          href="/sign-up"
-        />
+        <FooterLink text="Don't have an account?" linkText="Create an account" href="/sign-up" />
       </form>
     </>
   )
