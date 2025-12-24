@@ -61,6 +61,18 @@ declare global {
     linkText: string
     href: string
   }
+
+  type WelcomeEmailData = {
+    email: string
+    name: string
+    intro: string
+  }
+
+  type User = {
+    id: string
+    name: string
+    email: string
+  }
 }
 
 export {}
